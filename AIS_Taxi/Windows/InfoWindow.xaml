@@ -194,6 +194,7 @@
             />
         <Button x:Name="btExcel"
                 Grid.Row="2"
+                Grid.Column="1"
                 Height="30"
                 Width="130"
                 VerticalAlignment="Bottom"
@@ -202,7 +203,6 @@
                 Content="Выгрузка в Excel"
                 FontFamily="Comic Sans MS"
                 FontSize="15"
-                Grid.ColumnSpan="2"
             />
         <Button x:Name="btCustom"
                 Grid.Row="2"
@@ -227,6 +227,16 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Margin="20"
+            />
+        <Image  x:Name="btnBack"
+                Height="70"
+                Width="70"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="2"
+                Source="/Images/Left.png"
+                MouseLeftButtonUp="btnBack_MouseLeftButtonUp"
+                Grid.Row="2"
             />
     </Grid>
 </Window>

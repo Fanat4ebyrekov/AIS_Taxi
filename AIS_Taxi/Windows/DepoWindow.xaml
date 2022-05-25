@@ -9,7 +9,8 @@
         Height="720" 
         Width="1280"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
     <Grid Background="#FFC1F0F3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*"/>
@@ -65,7 +66,7 @@
                    HorizontalAlignment="Left" 
                    Grid.Column="1"
             />
-        <TextBlock Grid.Row="2"
+        <TextBox Grid.Row="2"
                    Text=""
                    FontFamily="Comic Sans MS"
                    FontSize="15"
@@ -76,7 +77,7 @@
                    Width="200"
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
-                   x:Name="cbCar" Background="White"
+                   x:Name="cbCar"
             />
         <TextBlock Grid.Row="2"
                    Text="Грузоподъемность"
@@ -87,7 +88,7 @@
                    HorizontalAlignment="Left" 
                    Grid.Column="2"
             />
-        <TextBlock Grid.Row="2"
+        <TextBox Grid.Row="2"
                    Text=""
                    FontFamily="Comic Sans MS"
                    FontSize="15"
@@ -110,7 +111,7 @@
                    VerticalAlignment="Top"
                    Margin="0 46 155 0"
             />
-        <TextBlock Grid.Row="2"
+        <TextBox Grid.Row="2"
                    Grid.Column="1"
                    FontFamily="Comic Sans MS"
                    FontSize="15"
@@ -190,6 +191,28 @@
                 FontSize="15"
                 FontFamily="Comic Sans MS"
             />
-
+        <Button x:Name="btAdd"
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Width="200"
+                Height="30"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="20"
+                Content="Добавить"
+                FontSize="15"
+                FontFamily="Comic Sans MS"
+            />
+        <Image x:Name="btnBack"
+                Grid.Row="2"
+                Height="70"
+                Width="70"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Source="/Images/Left.png"
+                MouseLeftButtonUp="btnBack_MouseLeftButtonUp"
+            />
     </Grid>
 </Window>

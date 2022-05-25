@@ -10,10 +10,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AIS_Taxi
+namespace AIS_Taxi.Windows
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -23,6 +22,37 @@ namespace AIS_Taxi
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnDepo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            DepoWindow depoWindow = new DepoWindow();
+            depoWindow.Show();  
+            this.Close();
+        }
+
+        private void btnTariff_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void btnInfo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            InfoWindow infoWindow = new InfoWindow();
+            infoWindow.Show();
+            this.Close();
+        }
+
+        private void btDriver_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnWorker_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

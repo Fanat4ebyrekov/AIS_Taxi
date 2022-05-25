@@ -10,26 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AIS_Taxi.Windows
+namespace AIS_Taxi
 {
     /// <summary>
-    /// Логика взаимодействия для InfoWindow.xaml
+    /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class InfoWindow : Window
+    public partial class AuthWindow : Window
     {
-        public InfoWindow()
+        public AuthWindow()
         {
             InitializeComponent();
-        }
-
-        private void btnBack_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            this.Hide();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
         }
     }
 }

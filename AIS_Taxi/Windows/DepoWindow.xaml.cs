@@ -24,6 +24,12 @@ namespace AIS_Taxi.Windows
             InitializeComponent();
         }
 
-        
+        private void btnBack_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }
