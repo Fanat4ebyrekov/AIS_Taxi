@@ -133,5 +133,9 @@
   <ItemGroup>
     <Resource Include="Images\Left.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Clasess\" />
+    <Folder Include="EF\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
