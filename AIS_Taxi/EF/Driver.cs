@@ -11,7 +11,7 @@ namespace AIS_Taxi.EF
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Driver
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace AIS_Taxi.EF
         {
             this.Car = new HashSet<Car>();
         }
-
+    
         public int IdDriver { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }

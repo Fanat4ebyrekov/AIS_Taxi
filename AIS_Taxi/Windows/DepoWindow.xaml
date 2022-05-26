@@ -25,7 +25,23 @@
         </Grid.RowDefinitions>
         <ListView Grid.Row="1"
                   Grid.ColumnSpan="4"
-                  Margin="20 10 20 10">
+                  SelectedItem="{Binding SelectedItemGrid}"
+                  ItemsSource="{Binding ListCar}"
+                  Margin="20 10 20 10"
+                  x:Name="AllAboutCar"
+                  DisplayMemberPath="{Binding Driver}">
+            <ListView.View>
+                <GridView >
+                    <GridView.Columns>
+                        <GridViewColumn Header="Номер" Width="auto" DisplayMemberBinding="{Binding NumberCar}"/>
+                        <GridViewColumn Header="Дата производства" Width="auto" DisplayMemberBinding="{Binding DateMade}"/>
+                        <GridViewColumn Header="Марка" Width="auto" DisplayMemberBinding="{Binding Brand}"/>
+                        <GridViewColumn Header="Грузоподъемность" Width="auto" DisplayMemberBinding="{Binding Carrying}"/>
+                        <GridViewColumn Header="Спец. оборудование" Width="auto" DisplayMemberBinding="{Binding SpecEquipment}"/>
+                        <GridViewColumn Header="Водитель" Width="auto" DisplayMemberBinding="{Binding Driver}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
         </ListView>
         <TextBlock Grid.Row="2"
                    Grid.ColumnSpan="2"
@@ -55,7 +71,7 @@
                    HorizontalAlignment="Left"
                    Height="30"
                    Width="150"
-                   x:Name="tb"
+                   x:Name="tbNumber"
             />
         <TextBlock Grid.Row="2"
                    Text="Дата выпуска"
@@ -66,19 +82,19 @@
                    HorizontalAlignment="Left" 
                    Grid.Column="1"
             />
-        <TextBox Grid.Row="2"
-                   Text=""
+        <DatePicker Grid.Row="2"
                    FontFamily="Comic Sans MS"
                    FontSize="15"
                    Margin="50 72 0 0"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
-                   Height="30"
+                   Height="170"
                    Width="200"
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
-                   x:Name="cbCar"
+                   x:Name="tbDateMade"
             />
+        
         <TextBlock Grid.Row="2"
                    Text="Грузоподъемность"
                    FontFamily="Comic Sans MS"
@@ -98,7 +114,7 @@
                    Height="30"
                    Width="200" 
                    Grid.Column="2"
-                   x:Name="cbClient" 
+                   x:Name="tbCarrying" 
                    Background="White"
                    
             />
@@ -120,8 +136,7 @@
                    Margin="0 72 0 0" 
                    Height="30" 
                    Width="200" 
-                   
-                   x:Name="cbWorker" 
+                   x:Name="tbBrand" 
                    Background="White"
             />
         <TextBlock Grid.Row="2"
@@ -143,7 +158,7 @@
                    Height="30" 
                    Width="819" 
                    Grid.ColumnSpan="3"
-                   x:Name="cbTarrif"
+                   x:Name="cbDriver"
             />
         <TextBlock Grid.Row="2"
                    Grid.ColumnSpan="2"
@@ -152,18 +167,18 @@
                    FontSize="15"
                    HorizontalAlignment="Left"       
                    VerticalAlignment="Top"
-                   Margin="20 133 0 0"
+                   Margin="17 218 0 0"
             />
         <TextBox Grid.Row="2"
                    FontFamily="Comic Sans MS"
                    FontSize="15"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="20 0 0 0" 
+                   Margin="20 155 0 0" 
                    Height="30" 
                    Width="390" 
                    Grid.ColumnSpan="2"
-                   Text="Бла-бла-бла"
+                   Text=""
                    VerticalContentAlignment="Center"
                    x:Name="tbOther"
             />

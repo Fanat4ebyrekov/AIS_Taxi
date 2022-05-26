@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,7 +16,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AIS_Taxi.EF;
 using static AIS_Taxi.Clasess.Entities;
-using AIS_Taxi.EF;
 
 
 
@@ -26,10 +26,33 @@ namespace AIS_Taxi.Windows
     /// </summary>
     public partial class DriverWindow : Window, INotifyPropertyChanged
     {
+        
+
+        private List<EF.Driver> listDriver;
+
+        public List<EF.Driver> ListDriver
+        {
+            get { return listDriver; }
+            set { 
+                
+                listDriver = value;
+
+                OnPropertyChanged();
+
+
+            }
+        }
+
+        private void Refresh()
+        {
+            ListDriver = context.Driver.ToList();
+        }
+
         private object selectedItemGrid;
 
         public object SelectedItemGrid
         {
+
             get { return selectedItemGrid; }
             set {
                 selectedItemGrid = value;
@@ -44,13 +67,11 @@ namespace AIS_Taxi.Windows
             }
         }
 
-
         public DriverWindow()
         {
             InitializeComponent();
-            AllAboutDriver.ItemsSource = Clasess.Entities.context.Driver.ToList();
-
             this.DataContext = this;
+            ListDriver = context.Driver.ToList();          
         }
 
 
@@ -62,15 +83,7 @@ namespace AIS_Taxi.Windows
             this.Close();
         }
 
-        private void tbFIO_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //Driver user = AllAboutDriver.SelectedItem as Driver;
-            //var FIO = FIO.Where
-            //tbFIO.Text = user.ToString();
-            //MessageBox.Show("dfdfdf");
-        }
 
-        
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
@@ -93,8 +106,8 @@ namespace AIS_Taxi.Windows
                 driver.PassSeries = PassArr[0];
                 driver.PassNum = PassArr[1];
 
-                driver.FName = fioArr[0];
-                driver.LName = fioArr[1];
+                driver.LName = fioArr[0];
+                driver.FName = fioArr[1];
                 driver.Patronymic = fioArr[2];
 
                 driver.Phone = tbPhone.Text;
@@ -103,7 +116,7 @@ namespace AIS_Taxi.Windows
 
                 driver.Address = tbAddress.Text;
 
-                MessageBox.Show("User Add");
+                MessageBox.Show("Водитель добавлен");
                 context.Driver.Add(driver);
                 context.SaveChanges();
                 AllAboutDriver.ItemsSource = context.Driver.ToList();
@@ -112,11 +125,7 @@ namespace AIS_Taxi.Windows
             {
                 MessageBox.Show("Что-то пошло не так");
                 return;
-            }
-            
-            
-
-            
+            }    
         }
 
         private bool validation()
@@ -150,40 +159,70 @@ namespace AIS_Taxi.Windows
 
         private void btSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            Driver driver = new Driver();
-
             try
             {
-                var SaveEdit = MessageBox.Show("Вы уверены?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var resClick = MessageBox.Show("Вы уверены?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-                if (SaveEdit == MessageBoxResult.Yes)
+                if (resClick == MessageBoxResult.Yes)
                 {
-                    string[] fioArr = tbFIO.Text.Split(' ');
-                    string[] PassArr = tbPassport.Text.Split(' ');
+                    var result = context.Driver.SingleOrDefault(b => b.IdDriver == ((Driver)selectedItemGrid).IdDriver);
+                    if (result != null)
+                    {
+                        string[] fioArr = tbFIO.Text.Split(' ');
 
-                    driver.PassSeries = PassArr[0];
-                    driver.PassNum = PassArr[1];
+                        result.LName = fioArr[0];
+                        result.FName = fioArr[1];
+                        result.Patronymic = fioArr[2];
 
-                    driver.FName = fioArr[0];
-                    driver.LName = fioArr[1];
-                    driver.Patronymic = fioArr[2];
+                        result.Phone = tbPhone.Text;
+                        result.DriverLicense = tbLicense.Text;
+                        result.Address = tbAddress.Text;
+                    }
 
-                    driver.Phone = tbPhone.Text;
 
-                    driver.DriverLicense = tbLicense.Text;
-
-                    driver.Address = tbAddress.Text;
+                    context.SaveChanges();
+                    MessageBox.Show("Пользователь успещно изменен", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ListDriver = context.Driver.ToList();
                 }
-
-                Clasess.Entities.context.SaveChanges();
             }
             catch (Exception)
             {
-                MessageBox.Show("Что-то пошло не так");
+                MessageBox.Show("Что-то не так");
                 return;
             }
-            
+        }
 
+        private void btDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var resClick = MessageBox.Show($"Удалить пользователя {(AllAboutDriver.SelectedItem as EF.Driver).LName}", "Подтвержение", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+            try
+            {
+                if (resClick == MessageBoxResult.Yes)
+                {
+                    var result = context.Driver.SingleOrDefault(b => b.IdDriver == ((Driver)selectedItemGrid).IdDriver);
+                    if (result == null)
+                    {
+                        MessageBox.Show("Запись не выбраны");
+                        return;
+                    }
+                    else
+                    {
+                        context.Driver.Remove(result);
+                        context.SaveChanges();
+                        MessageBox.Show("Водитель удален", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                        
+                    }
+                }
+              
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Что-то не так");
+                return;
+            }
+            Refresh();
         }
     }
 }
+
