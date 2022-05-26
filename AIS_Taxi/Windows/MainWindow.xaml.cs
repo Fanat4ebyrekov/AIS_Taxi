@@ -34,7 +34,10 @@ namespace AIS_Taxi.Windows
 
         private void btnTariff_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
+            this.Hide();
+            TariffWindow tariffWindow = new TariffWindow(); 
+            tariffWindow.Show();
+            this.Close();
         }
 
         private void btnInfo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -47,12 +50,26 @@ namespace AIS_Taxi.Windows
 
         private void btDriver_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            this.Hide();
+            DriverWindow driverWindow = new DriverWindow();
+            driverWindow.Show();
+            this.Close();
         }
 
         private void btnWorker_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            this.Hide();
+            WorkerWindow workerWindow = new WorkerWindow();
+            workerWindow.Show();
+            this.Close();
+        }
 
+        private void btnExit_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Hide();
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+            this.Close();
         }
     }
 }

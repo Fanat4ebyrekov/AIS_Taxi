@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,10 +64,66 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Clasess\Entities.cs" />
+    <Compile Include="EF\Car.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Client.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Driver.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Shipping.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagrams_Result.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sysdiagrams.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Tariff.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\TaxiBD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxiBD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\TaxiBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\TaxiBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxiBD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Worker.cs">
+      <DependentUpon>TaxiBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DriverWindow.xaml.cs">
+      <DependentUpon>DriverWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\TariffWindow.xaml.cs">
+      <DependentUpon>TariffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WorkerWindow.xaml.cs">
+      <DependentUpon>WorkerWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\DepoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DriverWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,6 +153,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\TariffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WorkerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -107,6 +180,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="EF\TaxiBD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TaxiBD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF\TaxiBD.edmx.diagram">
+      <DependentUpon>TaxiBD.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,9 +214,24 @@
   <ItemGroup>
     <Resource Include="Images\Left.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Clasess\" />
-    <Folder Include="EF\" />
+    <Resource Include="Images\Jason.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF\TaxiBD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TaxiBD.Context.cs</LastGenOutput>
+      <DependentUpon>TaxiBD.edmx</DependentUpon>
+    </Content>
+    <Content Include="EF\TaxiBD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TaxiBD.edmx</DependentUpon>
+      <LastGenOutput>TaxiBD.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

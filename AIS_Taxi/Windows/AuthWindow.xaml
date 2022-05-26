@@ -68,6 +68,7 @@
                 FontSize="15"
                 VerticalContentAlignment="Center"
                 FontFamily="Comic Sans MS"
+                Click="btEnter_Click"
             />
         
     </Grid>

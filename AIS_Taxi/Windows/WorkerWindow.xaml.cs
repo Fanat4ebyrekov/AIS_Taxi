@@ -1,5 +1,4 @@
-﻿using AIS_Taxi.Windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,22 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AIS_Taxi
+namespace AIS_Taxi.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для WorkerWindow.xaml
     /// </summary>
-    public partial class AuthWindow : Window
+    public partial class WorkerWindow : Window
     {
-        public AuthWindow()
+        public WorkerWindow()
         {
             InitializeComponent();
         }
 
-        private void btEnter_Click(object sender, RoutedEventArgs e)
+        private void btnBack_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             this.Hide();
             MainWindow mainWindow = new MainWindow();
