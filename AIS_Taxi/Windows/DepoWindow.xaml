@@ -29,7 +29,7 @@
                   ItemsSource="{Binding ListCar}"
                   Margin="20 10 20 10"
                   x:Name="AllAboutCar"
-                  DisplayMemberPath="{Binding Driver}">
+                  >
             <ListView.View>
                 <GridView >
                     <GridView.Columns>
@@ -38,7 +38,7 @@
                         <GridViewColumn Header="Марка" Width="auto" DisplayMemberBinding="{Binding Brand}"/>
                         <GridViewColumn Header="Грузоподъемность" Width="auto" DisplayMemberBinding="{Binding Carrying}"/>
                         <GridViewColumn Header="Спец. оборудование" Width="auto" DisplayMemberBinding="{Binding SpecEquipment}"/>
-                        <GridViewColumn Header="Водитель" Width="auto" DisplayMemberBinding="{Binding Driver}"/>
+                        <GridViewColumn Header="Водитель" Width="auto" DisplayMemberBinding="{Binding DRIVER}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
@@ -88,13 +88,15 @@
                    Margin="50 72 0 0"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
-                   Height="170"
+                   Height="30"
                    Width="200"
                    Grid.Column="1"
                    Grid.ColumnSpan="3"
                    x:Name="tbDateMade"
+                   
             />
-        
+
+
         <TextBlock Grid.Row="2"
                    Text="Грузоподъемность"
                    FontFamily="Comic Sans MS"
@@ -158,7 +160,9 @@
                    Height="30" 
                    Width="819" 
                    Grid.ColumnSpan="3"
-                   x:Name="cbDriver"
+                   x:Name="cbDriver" 
+                  Background="Red"
+                  
             />
         <TextBlock Grid.Row="2"
                    Grid.ColumnSpan="2"
@@ -167,14 +171,14 @@
                    FontSize="15"
                    HorizontalAlignment="Left"       
                    VerticalAlignment="Top"
-                   Margin="17 218 0 0"
+                   Margin="20 133 0 0"
             />
         <TextBox Grid.Row="2"
                    FontFamily="Comic Sans MS"
                    FontSize="15"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="20 155 0 0" 
+                   Margin="20 0 0 0" 
                    Height="30" 
                    Width="390" 
                    Grid.ColumnSpan="2"
@@ -192,7 +196,7 @@
                 Margin="20"
                 Content="Удалить запись"
                 FontSize="15"
-                FontFamily="Comic Sans MS"
+                FontFamily="Comic Sans MS" Click="btDelete_Click"
             />
         <Button x:Name="btSaveEdit"
                 Grid.Column="1"
@@ -204,7 +208,7 @@
                 Margin="20"
                 Content="Сохранить изменения"
                 FontSize="15"
-                FontFamily="Comic Sans MS"
+                FontFamily="Comic Sans MS" Click="btSaveEdit_Click"
             />
         <Button x:Name="btAdd"
                 Grid.Row="2"
@@ -217,7 +221,7 @@
                 Margin="20"
                 Content="Добавить"
                 FontSize="15"
-                FontFamily="Comic Sans MS"
+                FontFamily="Comic Sans MS" Click="btAdd_Click"
             />
         <Image x:Name="btnBack"
                 Grid.Row="2"

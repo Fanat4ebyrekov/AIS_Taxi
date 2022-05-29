@@ -11,8 +11,6 @@ namespace AIS_Taxi.EF
 {
     using System;
     using System.Collections.Generic;
-    using AIS_Taxi.EF;
-    using static AIS_Taxi.Clasess.Entities;
     
     public partial class Car
     {
@@ -30,7 +28,7 @@ namespace AIS_Taxi.EF
         public string Carrying { get; set; }
         public string SpecEquipment { get; set; }
 
-        //public string DRIVER { get => $"{LName} {FName} {Patronymic}"; }
+        public string DRIVER { get => $"{Driver.LName} {Driver.FName} {Driver.Patronymic}"; }
         public virtual Driver Driver { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shipping> Shipping { get; set; }

@@ -10,8 +10,8 @@
         <EntityTypeShape EntityType="TaxiModel.Driver" Width="1.5" PointX="0.75" PointY="1.125" />
         <EntityTypeShape EntityType="TaxiModel.Shipping" Width="1.5" PointX="5.25" PointY="1" />
         <EntityTypeShape EntityType="TaxiModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
-        <EntityTypeShape EntityType="TaxiModel.Tariff" Width="1.5" PointX="3" PointY="9.25" />
-        <EntityTypeShape EntityType="TaxiModel.Worker" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="TaxiModel.Tariff" Width="1.5" PointX="3" PointY="13.375" />
+        <EntityTypeShape EntityType="TaxiModel.Worker" Width="1.5" PointX="3" PointY="9.25" />
         <AssociationConnector Association="TaxiModel.FK_Car_Driver" />
         <AssociationConnector Association="TaxiModel.FK_Shipping_Car1" />
         <AssociationConnector Association="TaxiModel.FK_Shipping_Client" />

@@ -24,8 +24,20 @@
         <ListView Grid.Row="1"
                   Grid.ColumnSpan="4"
                   Margin="20 10 20 10"
-                  x:Name="AllAboutWorker">
-            
+                  x:Name="AllAboutWorker"
+                  SelectedItem="{Binding SelectedItemGrid}"
+                  ItemsSource="{Binding ListWorker}">
+            <ListView.View>
+                <GridView >
+                    <GridView.Columns>
+                        <GridViewColumn Header="ФИО" Width="auto" DisplayMemberBinding="{Binding FIO}"/>
+                        <GridViewColumn Header="Паспорт" Width="auto" DisplayMemberBinding="{Binding Passport}"/>
+                        <GridViewColumn Header="Телефон" Width="auto" DisplayMemberBinding="{Binding Phone}"/>
+                        <GridViewColumn Header="Дата поступления" Width="auto" DisplayMemberBinding="{Binding DateReciept}"/>
+                        <GridViewColumn Header="Адрес" Width="auto" DisplayMemberBinding="{Binding Address}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
         </ListView>
         <TextBlock Grid.Row="2"
                    Grid.ColumnSpan="2"
@@ -66,7 +78,7 @@
                    HorizontalAlignment="Left" 
                    Grid.Column="1"
             />
-        <TextBox Grid.Row="2"
+        <DatePicker Grid.Row="2"
                    Text=""
                    FontFamily="Comic Sans MS"
                    FontSize="15"
@@ -154,7 +166,7 @@
                 Margin="20"
                 Content="Удалить запись"
                 FontSize="15"
-                FontFamily="Comic Sans MS"
+                FontFamily="Comic Sans MS" Click="btDelete_Click"
             />
         <Button x:Name="btSaveEdit"
                 Grid.Column="1"
@@ -166,7 +178,7 @@
                 Margin="20"
                 Content="Сохранить изменения"
                 FontSize="15"
-                FontFamily="Comic Sans MS"
+                FontFamily="Comic Sans MS" Click="btSaveEdit_Click"
             />
         <Button x:Name="btAdd"
                 Grid.Row="2"
@@ -179,7 +191,7 @@
                 Margin="20"
                 Content="Добавить"
                 FontSize="15"
-                FontFamily="Comic Sans MS"
+                FontFamily="Comic Sans MS" Click="btAdd_Click"
             />
         <Image x:Name="btnBack"
                 Grid.Row="2"

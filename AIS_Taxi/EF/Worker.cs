@@ -31,7 +31,11 @@ namespace AIS_Taxi.EF
         public string Login { get; set; }
         public string Password { get; set; }
         public string Address { get; set; }
-    
+
+        public string FIO { get => $"{LName} {FName} {Patronymic}"; }
+
+        public string Passport { get => $"{PassSeries} {PassNum}"; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shipping> Shipping { get; set; }
     }

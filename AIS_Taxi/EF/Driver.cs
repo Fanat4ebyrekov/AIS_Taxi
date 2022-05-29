@@ -30,7 +30,7 @@ namespace AIS_Taxi.EF
         public string PassSeries { get; set; }
         public string PassNum { get; set; }
 
-        public string FIO { get => $"{FName} {LName} {Patronymic}"; }
+        public string FIO { get => $"{LName} {FName} {Patronymic}"; }
 
         public string Passport { get => $"{PassSeries} {PassNum}"; }
 

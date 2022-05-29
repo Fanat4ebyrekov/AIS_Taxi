@@ -169,6 +169,10 @@ namespace AIS_Taxi.Windows
                     if (result != null)
                     {
                         string[] fioArr = tbFIO.Text.Split(' ');
+                        string[] PassArr = tbPassport.Text.Split(' ');
+
+                        result.PassSeries = PassArr[0];
+                        result.PassNum = PassArr[1];
 
                         result.LName = fioArr[0];
                         result.FName = fioArr[1];
@@ -211,7 +215,7 @@ namespace AIS_Taxi.Windows
                         context.Driver.Remove(result);
                         context.SaveChanges();
                         MessageBox.Show("Водитель удален", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                        
+                        AllAboutDriver.ItemsSource = context.Driver.ToList();
                     }
                 }
               
@@ -221,7 +225,6 @@ namespace AIS_Taxi.Windows
                 MessageBox.Show("Что-то не так");
                 return;
             }
-            Refresh();
         }
     }
 }
